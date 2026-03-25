@@ -271,7 +271,9 @@ Após implementar os métodos:
 
 ## 🔧 Padrões Utilizados
 
-- Arquitetura em Camadas  
+- Arquitetura em Camadas
+- Model
+- Controller
 - Repository  
 - Service  
 
