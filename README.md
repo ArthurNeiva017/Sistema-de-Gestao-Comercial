@@ -1,4 +1,4 @@
-# Sistema de Gestão Comercial para Pequenos Negócios - Arquitetura em Camadas
+# Sistema de Gestão Comercial
 
 ## 🛒 Objetivo Educacional
 
