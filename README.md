@@ -1,4 +1,4 @@
-# Sistema de Gestão Comercial
+# Sistema de Gestão Comercial para loja de informatica
 
 ## 🛒 Objetivo Educacional
 
