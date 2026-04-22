@@ -1,5 +1,5 @@
 package br.ceub.ProjetoFinal.repository;
 
-public class UsuarioRepository {
+public interface UsuarioRepository {
 
 }
