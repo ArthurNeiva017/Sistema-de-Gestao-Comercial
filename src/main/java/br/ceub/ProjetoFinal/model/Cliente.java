@@ -1,12 +1,29 @@
 package br.ceub.ProjetoFinal.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "clientes")
 public class Cliente {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name="nome", length=200, nullable = false)
 	private String nome;
+	@Column(name="cpf", length=15, nullable = false)
 	private String cpf;
+	@Column(name="email", length=200, nullable = false)
 	private String email;
+	@Column(name="telefone",  nullable = false)
 	private int telefone;
+	@Column(name="endereco", length=200, nullable = false)
 	private String endereco;	
 	
 	public Cliente(int id, String nome, String cpf, String email, int telefone, String endereco) {
