@@ -50,7 +50,7 @@ public class ProdutoController {
 	
 	@PutMapping("/{id}")
     public ResponseEntity<Produto> updateProduto(@PathVariable Integer id, @RequestBody Produto produtoDetails) {
-        Optiona<Produto>optionalProduto = produtoService.findById(id);
+        Optional<Produto>optionalProduto = produtoService.findById(id);
         if (optionalProduto.isPresent()) {
             Produto produto = optionalProduto.get();
             produto.setNome(produtoDetails.getNome());
