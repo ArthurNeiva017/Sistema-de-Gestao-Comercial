@@ -13,7 +13,7 @@ public class Produto {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	
 	@Column(name="nome", length=200, nullable = false)
 	private String nome;
@@ -22,7 +22,7 @@ public class Produto {
 	@Column(name="preco",  nullable = false)
 	private double preco;
 	@Column(name="quantidade",  nullable = false)
-	private int quantidade;
+	private Integer quantidade;
 	
 	
 	public Produto(int id, String nome, String descricao, double preco, int quantidade) {
