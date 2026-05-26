@@ -1,5 +1,7 @@
 package br.ceub.ProjetoFinal.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,10 +21,13 @@ public class Venda {
 	private LocalDate data;
 
 	@Column(name="valorTotal", nullable = false)
-	private double valorTotal;
+	private Double valorTotal;
 
+    @ManyToOne
     @Column(name="clienteId", nullable = false)z
     private Cliente clienteId;
+    
+    @ManyToOne
     @Column(name="usuarioId", nullable = false)
     private Usuario usuarioId;
     
