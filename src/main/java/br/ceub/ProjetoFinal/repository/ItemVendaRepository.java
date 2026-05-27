@@ -1,5 +1,24 @@
 package br.ceub.ProjetoFinal.repository;
 
-public interface ItemVendaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import br.ceub.ProjetoFinal.model.ItemVenda;
+
+@Repository
+public interface ItemVendaRepository extends JpaRepository<ItemVenda, Integer> {
+
+	@Query("SELECT c FROM ItemVenda c")
+	public List<ItemVenda> findAll();
+	
+	@Query("SELECT c FROM ItemVenda c WHERE c.id = :id")
+	public Optional<ItemVenda> findById(Integer id);
+	
+	@Query("SELECT c FROM ItemVenda c WHERE c.vendaId = :vendaId")
+	public Optional<ItemVenda> findByVendaId(Integer vendaId);
+	
+	@Query("DELETE FROM ItemVenda c WHERE c.id = :id")
+	public void deleteById(Integer id);
+
+	
 }
