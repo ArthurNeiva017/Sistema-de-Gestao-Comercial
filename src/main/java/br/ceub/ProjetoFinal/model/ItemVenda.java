@@ -15,6 +15,7 @@ public class ItemVenda {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+    @ManyToOne
     @Column(name="produtoId", nullable = false)
     private Produto produtoId;
 
