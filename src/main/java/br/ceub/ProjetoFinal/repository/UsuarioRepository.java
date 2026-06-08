@@ -1,7 +1,9 @@
 package br.ceub.ProjetoFinal.repository;
 
+import br.ceub.ProjetoFinal.model.Usuario;
+
 public interface UsuarioRepository {
 
-	Object findByEmailIgnoreCase(String trim);
+	Usuario findByEmailIgnoreCase(String trim);
 
 }
