@@ -34,7 +34,4 @@ public class ClienteService {
         clienteRepository.deleteById(id);
     }
 
-    public List<Cliente> findAllAtivos() {
-        return clienteRepository.findAllAtivos();
-    }
 }

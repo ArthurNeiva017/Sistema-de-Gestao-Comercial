@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -17,8 +18,8 @@ public class ItemVenda {
 	private Integer id;
 
     @ManyToOne
-    @Column(name="produtoId", nullable = false)
-    private Produto produtoId;
+    @JoinColumn(name="produtoId", nullable = false)
+    private Produto produto;
 
     @Column(name="quantidade", nullable = false)
     private Integer quantidade;
@@ -30,9 +31,9 @@ public class ItemVenda {
         super();
     }
 
-    public ItemVenda(int id, Produto produtoId, int quantidade, double precoUnitario) {
+    public ItemVenda(int id, Produto produto, int quantidade, double precoUnitario) {
         this.id = id;
-        this.produtoId = produtoId;
+        this.produto = produto;
         this.quantidade = quantidade;
         this.precoUnitario = precoUnitario;
     }
@@ -45,12 +46,12 @@ public class ItemVenda {
         this.id = id;
     }
 
-    public Produto getProdutoId() {
-        return produtoId;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setProdutoId(Produto produtoId) {
-        this.produtoId = produtoId;
+    public void setProdutoId(Produto produto) {
+        this.produto = produto;
     }
 
     public int getQuantidade() {

@@ -26,7 +26,7 @@ public class Cliente {
 	@Column(name="endereco", length=200, nullable = false)
 	private String endereco;	
 	
-	public Cliente(int id, String nome, String cpf, String email, int telefone, String endereco) {
+	public Cliente(Integer id, String nome, String cpf, String email, Integer telefone, String endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
@@ -36,10 +36,10 @@ public class Cliente {
 	}
 	
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -60,10 +60,10 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getTelefone() {
+	public Integer getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(Integer telefone) {
 		this.telefone = telefone;
 	}
 	public String getEndereco() {

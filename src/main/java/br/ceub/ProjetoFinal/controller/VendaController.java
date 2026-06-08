@@ -57,8 +57,8 @@ public class VendaController {
             Venda venda = optionalVenda.get();
             venda.setData(vendaDetails.getData());
             venda.setValorTotal(vendaDetails.getValorTotal());
-            venda.setClienteId(vendaDetails.getClienteId());
-            venda.setUsuarioId(vendaDetails.getUsuarioId());
+            venda.setClienteId(vendaDetails.getCliente());
+            venda.setUsuarioId(vendaDetails.getUsuario());
             venda.setQuantidade(vendaDetails.getQuantidade());
             Venda updatedVenda = vendaService.save(venda);
             return ResponseEntity.ok(updatedVenda);

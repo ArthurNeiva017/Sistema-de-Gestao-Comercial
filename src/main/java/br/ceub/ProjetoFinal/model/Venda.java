@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -25,23 +26,23 @@ public class Venda {
 	private Double valorTotal;
 
     @ManyToOne
-    @Column(name="clienteId", nullable = false)
+    @JoinColumn(name="clienteId", nullable = false)
     private Cliente cliente;
     
     @ManyToOne
-    @Column(name="usuarioId", nullable = false)
+    @JoinColumn(name="usuarioId", nullable = false)
     private Usuario usuario;
     
     public Venda() {
         super();
     }
 
-    public Venda(int id, LocalDate data, double valorTotal, Cliente clienteId, Usuario usuarioId) {
+    public Venda(int id, LocalDate data, double valorTotal, Cliente cliente, Usuario usuario) {
         this.id = id;
         this.data = data;
         this.valorTotal = valorTotal;
-        this.cliente = clienteId;
-        this.usuario = usuarioId;
+        this.cliente = cliente;
+        this.usuario = usuario;
     }
 
     public Integer getId() {
@@ -68,20 +69,20 @@ public class Venda {
         this.valorTotal = valorTotal;
     }
 
-    public Cliente getClienteId() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setClienteId(Cliente clienteId) {
-        this.cliente = clienteId;
+    public void setClienteId(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public Usuario getUsuarioId() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuarioId(Usuario usuarioId) {
-        this.usuario = usuarioId;
+    public void setUsuarioId(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 	public Object getQuantidade() {
