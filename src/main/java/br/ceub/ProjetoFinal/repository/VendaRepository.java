@@ -24,6 +24,10 @@ public interface VendaRepository extends JpaRepository<Venda, Integer> {
 	
 	@Query("DELETE FROM Venda c WHERE c.id = :id")
 	public void deleteById(Integer id);
+	
+	@Query("SELECT c FROM Venda c WHERE c.cliente.nome = :nome")
+	public List<Venda> findByNome(String nome);
+	
 
 	
 }

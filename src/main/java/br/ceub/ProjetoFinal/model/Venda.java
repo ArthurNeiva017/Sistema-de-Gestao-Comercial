@@ -25,12 +25,12 @@ public class Venda {
 	private Double valorTotal;
 
     @ManyToOne
-    @Column(name="clienteId", nullable = false)z
-    private Cliente clienteId;
+    @Column(name="clienteId", nullable = false)
+    private Cliente cliente;
     
     @ManyToOne
     @Column(name="usuarioId", nullable = false)
-    private Usuario usuarioId;
+    private Usuario usuario;
     
     public Venda() {
         super();
@@ -40,8 +40,8 @@ public class Venda {
         this.id = id;
         this.data = data;
         this.valorTotal = valorTotal;
-        this.clienteId = clienteId;
-        this.usuarioId = usuarioId;
+        this.cliente = clienteId;
+        this.usuario = usuarioId;
     }
 
     public Integer getId() {
@@ -69,20 +69,30 @@ public class Venda {
     }
 
     public Cliente getClienteId() {
-        return clienteId;
+        return cliente;
     }
 
     public void setClienteId(Cliente clienteId) {
-        this.clienteId = clienteId;
+        this.cliente = clienteId;
     }
 
     public Usuario getUsuarioId() {
-        return usuarioId;
+        return usuario;
     }
 
     public void setUsuarioId(Usuario usuarioId) {
-        this.usuarioId = usuarioId;
+        this.usuario = usuarioId;
     }
+
+	public Object getQuantidade() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setQuantidade(Object quantidade) {
+		// TODO Auto-generated method stub
+		
+	}
     
     
     

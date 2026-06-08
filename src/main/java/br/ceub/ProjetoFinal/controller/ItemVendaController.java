@@ -54,7 +54,6 @@ public class ItemVendaController {
         Optional<ItemVenda> optionalItemVenda = itemVendaService.findById(id);
         if (optionalItemVenda.isPresent()) {
             ItemVenda itemVenda = optionalItemVenda.get();
-            itemVenda.setVendaId(itemVendaDetails.getVendaId());
             itemVenda.setProdutoId(itemVendaDetails.getProdutoId());
             itemVenda.setQuantidade(itemVendaDetails.getQuantidade());
             itemVenda.setPrecoUnitario(itemVendaDetails.getPrecoUnitario());
