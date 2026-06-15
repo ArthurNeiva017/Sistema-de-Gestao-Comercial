@@ -1,74 +1,79 @@
-package br.ceub.ProjetoFinal.model;
+package br.ceub.ProjetoFinal.controller;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import java.util.List;
 
-@Entity
-@Table(name = "itens_venda")
-public class ItemVenda {
-    
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+import java.util.Optional;
 
-    @ManyToOne
-    @JoinColumn(name="produtoId", nullable = false)
-    private Produto produto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-    @Column(name="quantidade", nullable = false)
-    private Integer quantidade;
+import br.ceub.ProjetoFinal.model.ItemVenda;
+import br.ceub.ProjetoFinal.service.ItemVendaService;
 
-    @Column(name="precoUnitario", nullable = false)
-    private double precoUnitario;
+@RestController
+@RequestMapping("/api/itensvenda")
+public class ItemVendaController {
 
-    public ItemVenda() {
-        super();
+    @Autowired
+    private ItemVendaService itemVendaService;
+
+    @PostMapping
+    public ResponseEntity<ItemVenda> createItemVenda(@RequestBody ItemVenda itemVenda) {
+        ItemVenda savedItemVenda = itemVendaService.save(itemVenda);
+        return ResponseEntity.ok(savedItemVenda);
     }
 
-    public ItemVenda(int id, Produto produto, int quantidade, double precoUnitario) {
-        this.id = id;
-        this.produto = produto;
-        this.quantidade = quantidade;
-        this.precoUnitario = precoUnitario;
+    @GetMapping
+    public ResponseEntity<List<ItemVenda>> getAllItemVenda() {
+        List<ItemVenda> ItemVendas = itemVendaService.findAll();
+        return ResponseEntity.ok(ItemVendas);
     }
 
-    public Integer getId() {
-        return id;
+    @GetMapping("/{id}")
+    public ResponseEntity<ItemVenda> getItemVendaById(@PathVariable Integer id) {
+        Optional<ItemVenda> ItemVenda = itemVendaService.findById(id);
+        return ItemVenda.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    @GetMapping("/search")
+    public ResponseEntity<List<ItemVenda>> searchItemVendas(@RequestParam String nome) {
+        List<ItemVenda> ItemVendas = itemVendaService.findByNome(nome);
+        return ResponseEntity.ok(ItemVendas);
     }
 
-    public Produto getProduto() {
-        return produto;
+    @PutMapping("/{id}")
+    public ResponseEntity<ItemVenda> updateItemVenda(@PathVariable Integer id, @RequestBody ItemVenda itemVendaDetails) {
+        Optional<ItemVenda> optionalItemVenda = itemVendaService.findById(id);
+        if (optionalItemVenda.isPresent()) {
+            ItemVenda itemVenda = optionalItemVenda.get();
+            itemVenda.setProduto(itemVendaDetails.getProduto());
+            itemVenda.setQuantidade(itemVendaDetails.getQuantidade());
+            itemVenda.setPrecoUnitario(itemVendaDetails.getPrecoUnitario());
+            ItemVenda updatedItemVenda = itemVendaService.save(itemVenda);
+            return ResponseEntity.ok(updatedItemVenda);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    public void setProdutoId(Produto produto) {
-        this.produto = produto;
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteItemVenda(@PathVariable Integer id) {
+        Optional<ItemVenda> itemVenda = itemVendaService.findById(id);
+        if (itemVenda.isPresent()) {
+            itemVendaService.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getPrecoUnitario() {
-        return precoUnitario;
-    }
-
-    public void setPrecoUnitario(double precoUnitario) {
-        this.precoUnitario = precoUnitario;
-    }
-    
 
 }
