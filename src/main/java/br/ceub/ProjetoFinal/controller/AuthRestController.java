@@ -35,6 +35,7 @@ public class AuthRestController {
         this.jwtService = jwtService;
         this.usuarioRepository = usuarioRepository;
     }
+    
 
     @PostMapping("/login")
     @Operation(summary = "Obter token JWT", description = "Autentica pelo e-mail e pela senha cadastrados na tabela de usuários")
@@ -62,5 +63,10 @@ public class AuthRestController {
         }
         String token = jwtService.generateToken(usuario);
         return ResponseEntity.ok(new AuthResponse(token));
+        
+        
+        
     }
+    
+    
 }
