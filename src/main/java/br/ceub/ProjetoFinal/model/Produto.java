@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "produto")
 public class Produto {
 	
 	@Id
@@ -20,12 +20,14 @@ public class Produto {
 	@Column(name="descricao", length=200, nullable = true)
 	private String descricao;
 	@Column(name="preco",  nullable = false)
-	private double preco;
-	@Column(name="quantidade",  nullable = false)
+	private Double preco;
+	@Column(name="quantidade_estoque",  nullable = false)
 	private Integer quantidade;
-	
-	
-	public Produto(int id, String nome, String descricao, double preco, int quantidade) {
+
+	public Produto() {
+	}
+
+	public Produto(Integer id, String nome, String descricao, Double preco, Integer quantidade) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -34,10 +36,10 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -52,16 +54,16 @@ public class Produto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public double getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
-	public void setPreco(double preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-	public int getQuantidade() {
+	public Integer getQuantidade() {
 		return quantidade;
 	}
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
 }

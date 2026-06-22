@@ -24,8 +24,12 @@ public class Cliente {
 	@Column(name="telefone",  nullable = false)
 	private Integer telefone;
 	@Column(name="endereco", length=200, nullable = false)
-	private String endereco;	
-	
+	private String endereco;
+
+	public Cliente(Integer id) {
+		this.id = id;
+	}
+
 	public Cliente(Integer id, String nome, String cpf, String email, Integer telefone, String endereco) {
 		this.id = id;
 		this.nome = nome;
@@ -34,8 +38,12 @@ public class Cliente {
 		this.telefone = telefone;
 		this.endereco = endereco;
 	}
-	
-	
+
+	public Cliente() {
+
+	}
+
+
 	public Integer getId() {
 		return id;
 	}

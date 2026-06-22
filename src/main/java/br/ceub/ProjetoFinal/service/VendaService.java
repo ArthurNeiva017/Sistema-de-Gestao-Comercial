@@ -35,9 +35,9 @@ public class VendaService {
 	public List<Venda> findByNome(String nome) {
 		return vendaRepository.findByNome(nome);
 	}
-	
+
 	public void deleteById(Integer id) {
 		vendaRepository.deleteById(id);
 	}
-	
+
 }
