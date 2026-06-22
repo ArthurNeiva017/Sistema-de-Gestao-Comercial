@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "itens_venda")
+@Table(name = "item_venda")
 public class ItemVenda {
     
 	@Id
@@ -18,17 +18,17 @@ public class ItemVenda {
 	private Integer id;
 
     @ManyToOne
-    @JoinColumn(name="produtoId", nullable = false)
+    @JoinColumn(name="produto_id", nullable = false)
     private Produto produto;
 
     @Column(name="quantidade", nullable = false)
     private Integer quantidade;
 
-    @Column(name="precoUnitario", nullable = false)
+    @Column(name="preco_unitario", nullable = false)
     private Double precoUnitario;
     
     @ManyToOne
-    @JoinColumn(name="vendaId", nullable = false)
+    @JoinColumn(name="venda_id", nullable = false)
     private Venda venda;
 
     public ItemVenda() {

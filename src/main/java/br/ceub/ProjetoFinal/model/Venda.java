@@ -12,7 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "vendas")
+@Table(name = "venda")
 public class Venda {
 
 	@Id
@@ -37,7 +37,7 @@ public class Venda {
         super();
     }
 
-    public Venda(int id, LocalDate data, double valorTotal, Cliente cliente, Usuario usuario) {
+    public Venda(Integer id, LocalDate data, Double valorTotal, Cliente cliente, Usuario usuario) {
         this.id = id;
         this.data = data;
         this.valorTotal = valorTotal;
@@ -61,11 +61,11 @@ public class Venda {
         this.data = data;
     }
 
-    public double getValorTotal() {
+    public Double getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
+    public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
 
