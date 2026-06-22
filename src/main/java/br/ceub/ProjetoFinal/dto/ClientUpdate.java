@@ -4,7 +4,7 @@ public record ClientUpdate(
         String nome,
         String email,
         String cpf,
-        Integer telefone,
+        String telefone,
         String endereco
 ) {
 }

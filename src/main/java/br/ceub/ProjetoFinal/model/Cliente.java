@@ -22,7 +22,7 @@ public class Cliente {
 	@Column(name="email", length=200, nullable = false)
 	private String email;
 	@Column(name="telefone",  nullable = false)
-	private Integer telefone;
+	private String telefone;
 	@Column(name="endereco", length=200, nullable = false)
 	private String endereco;
 
@@ -30,7 +30,7 @@ public class Cliente {
 		this.id = id;
 	}
 
-	public Cliente(Integer id, String nome, String cpf, String email, Integer telefone, String endereco) {
+	public Cliente(Integer id, String nome, String cpf, String email, String telefone, String endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
@@ -68,10 +68,10 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(Integer telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public String getEndereco() {
